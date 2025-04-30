@@ -7,12 +7,11 @@ from huggingface_hub import hf_hub_download
 
 # Unduh model dari Hugging Face
 model_path = hf_hub_download(repo_id="barisetiawan51/stacking-model-100", filename="stacking_model_100_compressed.pkl")
-scaler_path = hf_hub_download(repo_id="barisetiawan51/stacking-model-100", filename="scaler.pkl")
 
 # Memuat model stacking dan scaler
 try:
     model = joblib.load(model_path)
-    scaler = joblib.load(scaler_path)
+    scaler = joblib.load("scaler.pkl")
 except Exception as e:
     st.error(f"Gagal memuat model atau scaler: {e}")
     st.stop()
